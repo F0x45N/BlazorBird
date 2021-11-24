@@ -1,17 +1,25 @@
-﻿<div class="game-container" @onclick="gameManager.GameStart">
+﻿<div class="game-container" tabindex="0" @onclick="gameManager.GameStart" @onkeyup="HandleKeyUp">
     <div class="sky">
-        <div class="bird" style="@birdCss"></div>
+        <Bird birdModel="gameManager.Bird" />
     </div>
     <div class="ground"></div>
+
+    @foreach (var pipe in gameManager.Pipes)
+    {
+        <Pipe pipeModel="pipe" />
+    }
 </div>
 
 @code {
     GameManager gameManager = new GameManager();
 
-    private string birdCss => $"bottom: {gameManager.Bird.DistanceFromGround}px";
-
     protected override void OnInitialized()
     {
-        gameManager.PropertyChanged += (o, e) => StateHasChanged();
+        gameManager.MainLoopCompleted += (o, e) => StateHasChanged();
+    }
+
+    private void HandleKeyUp (KeyboardEventArgs e)
+    {
+        if (e.Key == " ") gameManager.Jump();
     }
 }

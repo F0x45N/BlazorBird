@@ -1,6 +1,8 @@
 ﻿.game-container {
     width: 500px;
     height: 730px;
+    display: inline-flex;
+    justify-content: center;
     position: absolute;
 }
 
@@ -19,10 +21,4 @@
     top: 580px;
 }
 
-.bird {
-    background-color: yellow;
-    width: 60px;
-    height: 45px;
-    left: 220px;
-    position: absolute;
-}
+

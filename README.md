@@ -1,5 +1,6 @@
 # BlazorBird
 Implementation of Flappy Bird with Blazor WASM on web
+## Based on this tutorial: https://www.youtube.com/watch?v=wTmZCu16LNU ##
 
 - Free Time Project
 - Mainly for Blazor experiment and trying out new ideas

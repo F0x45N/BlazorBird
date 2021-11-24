@@ -49,6 +49,18 @@
         private void CheckForCollisions()
         {
             if (Bird.IsOnGround()) GameOver();
+
+            // 1. Check for a pipe in the center of container
+            var centeredPipe = Pipes.FirstOrDefault(p => p.IsCentered());
+
+            // 2. If there is a pipe, check for collision
+            if (centeredPipe != null)
+            {
+                bool hasCollidedWithBottom = Bird.DistanceFromGround < centeredPipe.GapBottom - 150;
+                bool hasCollidedWithTop = Bird.DistanceFromGround + 45 > centeredPipe.GapTop - 150;
+
+                if (hasCollidedWithBottom || hasCollidedWithTop) GameOver();
+            }
         }
 
         private void ManagePipes()
